@@ -1,0 +1,32 @@
+app.listen('PORT',(error)=>{
+    if(!error){
+
+    }
+    else{
+
+    }
+})
+
+mongoose.connect('')
+
+const Product=mongoose.model("product",{
+    id:{
+
+    },
+    abc:{
+
+    }
+})
+
+app.use(express.json())
+app.use(cors())
+
+app.post('/addsponsor',async(req,res)=>{
+
+    const product = await Product.find({});
+})
+
+const Product=new product({
+    id:id,
+    name:
+})
