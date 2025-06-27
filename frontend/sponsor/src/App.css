@@ -112,14 +112,10 @@ a {
 .btn {
   display: inline-block;
   padding: 1.2rem 3.2rem;
-  background-color: #b50c12;
-  color: #fff;
+  background-color: #faa31b;
+  color: #000;
   text-transform: capitalize;
-  border-radius: 0.6rem;
-  -webkit-border-radius: 0.6rem;
-  -moz-border-radius: 0.6rem;
-  -ms-border-radius: 0.6rem;
-  -o-border-radius: 0.6rem;
+  border-radius: 6rem;
 }
 .section-common--title {
   font-size: 2rem;
@@ -130,7 +126,7 @@ a {
   box-shadow: var(--btn-box-shadow);
   cursor: pointer;
   color: var(--buttonColor);
-  border: 0.1rem solid var(--buttonColor);
+  border: 0.18rem solid #faa31b;
 }
 .btn:focus-visible,
 input:focus-visible,
@@ -183,6 +179,102 @@ textarea:focus-visible {
 }
 .section-navbar .navbar ul li a:hover:after {
   width: 100%;
-} 
+}
 
-/***** End Header Section ****
+/***** End Header Section ****/
+
+/***** Home Section *****/
+
+main {
+  height: 84vh;
+  position: relative;
+  margin-top: 2rem;
+  background-color: #ffffff;
+  background-image: linear-gradient(
+    to top right,
+    #e0ddcf,
+    #f0ddc2,
+    #f5eacc,
+    #fef9eb
+  );
+}
+
+.custom-shape-divider-bottom-1696038172 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+.custom-shape-divider-bottom-1696038172 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 15rem;
+}
+.custom-shape-divider-bottom-1696038172 .shape-fill {
+  fill: #ffbd60;
+}
+
+main .section-hero {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section-hero .grid {
+  align-items: center;
+}
+.section-hero .hero-heading {
+  font-size: 5.8rem;
+  line-height: 1.5;
+  /* -webkit-initial-letter: -0.2rem;
+  initial-letter: -0.2rem; */
+  /* text-transform: capitalize; */
+  color: #3c3e44;
+  text-align: center;
+  font-weight: 600;
+  font-family: sans-serif;
+}
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+.kaushan-script-regular {
+  font-family: "Kaushan Script", cursive;
+  /* font-weight: 100; */
+  font-style: normal;
+}
+.fruktur-regular {
+  font-family: "Fruktur", system-ui;
+  font-weight: 400;
+  letter-spacing: 0.8rem;
+  font-style: normal;
+  font-size: 12rem;
+  color: #745b4f;
+  position: relative;
+  text-shadow: 4px 4px 0 #ffcc80, 8px 8px 0 #ffb74d, 12px 12px 0 #ffa726;
+}
+
+.section-hero .hero-para {
+  margin: 2rem 0 4.2rem;
+  color: #3c3e44;
+  /* font-family: Urbanist; */
+}
+.section-hero .hero-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/***** End Home Section *****/
