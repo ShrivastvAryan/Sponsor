@@ -3,7 +3,7 @@ export const About = () => {
   return (
     <>
       <div className="section-about container">
-        <h2 className="container-title">Our Top Sponsors</h2>
+        <h2 className="container-title ">Our Top Sponsors</h2>
         <div className="gradient-cards ">
           {sponsorList.map((curData) => {
             const { id, companyName, eventType, sponsorshipType } = curData;

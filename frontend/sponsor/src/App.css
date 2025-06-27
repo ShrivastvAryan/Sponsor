@@ -298,9 +298,9 @@ main .section-hero {
 
 .container-title {
   text-align: center;
-  padding: 0 !important;
-  margin-bottom: 40px;
-  font-size: 40px;
+  /* padding: 0 !important; */
+  margin-bottom: 2.5rem;
+  font-size: 3rem;
   color: #745b4f;
   font-weight: 600;
   line-height: 60px;
@@ -319,7 +319,17 @@ main .section-hero {
   background: linear-gradient(to top right, #e0ddcf, #f0ddc2, #f5eacc, #fef9eb);
   background-clip: padding-box;
   border-radius: 45px;
-  padding: 40px;
+  padding: 5rem;
+  -webkit-border-radius: 45px;
+  -moz-border-radius: 45px;
+  -ms-border-radius: 45px;
+  -o-border-radius: 45px;
+}
+
+.container-card p {
+  font-size: 1.5rem;
+  /* text-indent: 1rem; */
+  color: #745b4f;
 }
 
 .bg-green-box,
@@ -359,22 +369,25 @@ main .section-hero {
   background: linear-gradient(71deg, #0c0a0e, #5f6fad, #0c0a0e);
 }
 
-.card-title {
-  font-weight: 600;
-  color: white;
+.country-card .card-title {
+  font-weight: 900;
+  color: #745b4f;
   letter-spacing: -0.02em;
   line-height: 40px;
   font-style: normal;
-  font-size: 28px;
-  padding-bottom: 8px;
+  font-size: 2rem;
+  font-family: cursive;
+  text-align: center;
+  padding-bottom: 1rem;
 }
 
 .card-description {
   font-weight: 600;
   line-height: 32px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 16px;
+  color: #000;
+  font-size: 1.3rem;
   max-width: 470px;
+  padding-right: 1rem;
 }
 
 /***** End Explore Section *****/
@@ -458,3 +471,61 @@ footer {
 }
 
 /***** End Footer Section *****/
+
+/***** Explore Section *****/
+
+.country-card {
+  /* margin-top: rem; */
+}
+.country-section {
+  /* margin: 1rem auto 9.6rem auto; */
+  & .grid {
+    gap: 3.2rem;
+    max-width: 130rem;
+    margin: auto;
+  }
+
+  & img {
+    width: 100%;
+    display: flex;
+    max-width: 50rem;
+    height: 16rem;
+  }
+}
+
+/* indivisual card container  */
+.country-details-card {
+  max-width: 100%;
+  margin: 6.4rem auto;
+  box-shadow: rgba(168, 163, 184, 0.15) 0px 48px 100px 0px;
+
+  & .container-card {
+    & .grid {
+      align-items: center;
+    }
+
+    & img {
+      width: 100%;
+      max-width: 30rem;
+      margin-bottom: 0;
+      height: auto;
+      justify-self: center;
+      align-items: center;
+      box-shadow: rgba(255, 255, 255, 0.1) 0px 48px 100px 0px;
+    }
+  }
+
+  & .infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  & .country-card-backBtn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+/***** End Explore Section *****/
