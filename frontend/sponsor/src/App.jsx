@@ -21,11 +21,11 @@ function App() {
           element: <About />,
         },
         {
-          path: "/contact",
+          path: "contact",
           element: <Contact />,
         },
         {
-          path: "/explore",
+          path: "explore",
           element: <Explore />,
         },
       ],

@@ -1,7 +1,7 @@
 export const Explore = () => {
   return (
     <>
-      <h1>Explore Page</h1>
+      <h1>Explore page</h1>
     </>
   );
 };
