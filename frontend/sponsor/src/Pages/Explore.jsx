@@ -98,7 +98,7 @@ export const Explore = () => {
     "Conference",
     "Workshop",
   ];
-  const sponsorshipTypes = ["all", "monetary", "in-kind"];
+  const sponsorshipTypes = ["All Categories", "monetary", "in-kind"];
 
   const filteredSponsors = sponsors.filter((sponsor) => {
     const matchesSearch =
@@ -130,22 +130,22 @@ export const Explore = () => {
   return (
     <div className="page-wrapper">
       <div className="main-container">
-        <div className="controls">
+        <section className="controls">
           <div className="controls-inner">
-            <div className="input-wrapper">
-              <Search size={20} className="input-icon" />
+            {/* className: input-wraper */}
+            <div>
               <input
                 type="text"
-                placeholder="Search sponsors or events..."
+                placeholder="🔍 Search sponsors or events..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-input"
               />
             </div>
-
-            <div className="select-wrapper">
-              <Filter size={16} className="input-icon" />
-              <select
+            {/* removing className: select-wraper */}
+            <div>
+              {/* <Filter size={16} className="input-icon" /> */}
+              {/* <select
                 value={selectedFilter}
                 onChange={(e) => setSelectedFilter(e.target.value)}
                 className="select-box"
@@ -165,6 +165,17 @@ export const Explore = () => {
                     </option>
                   ))}
                 </optgroup>
+              </select> */}
+              <select
+                className="filter-select"
+                value={selectedFilter}
+                onChange={(e) => setSelectedFilter(e.target.value)}
+              >
+                {eventTypes.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -189,13 +200,13 @@ export const Explore = () => {
               )}
             </div>
           </div>
-        </div>
+        </section>
 
         <div className="sponsors-grid">
-          {filteredSponsors.map((sponsor) => (
+          {filteredSponsors.map((sponsor, index) => (
             <div
               key={sponsor.id}
-              className={`sponsor-card ${
+              className={`sponsor-card sponsor-card-${index + 1} ${
                 selectedSponsors.includes(sponsor.id) ? "selected" : ""
               }`}
               onMouseEnter={(e) => {
@@ -220,9 +231,8 @@ export const Explore = () => {
                 />
               </div>
 
-              <div className="logo-placeholder">
-                <Building2 size={40} style={{ color: "#c2410c" }} />
-              </div>
+              {/* <div className="logo-placeholder">{sponsor.logo}</div> */}
+              <div className="sponsor-icon">{sponsor.icon}</div>
 
               <h3 className="company-name">{sponsor.name}</h3>
 
