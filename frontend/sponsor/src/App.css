@@ -186,16 +186,22 @@ textarea:focus-visible {
 /***** Home Section *****/
 
 main {
-  height: 84vh;
+  /* height: 84vh; */
+  min-height: 90vh;
   position: relative;
   margin-top: 2rem;
-  background-color: #ffffff;
+  /* background-color: #ffffff;
   background-image: linear-gradient(
     to top right,
     #e0ddcf,
     #f0ddc2,
     #f5eacc,
     #fef9eb
+  ); */
+  background: linear-gradient(
+    135deg,
+    rgb(255, 244, 167) 0%,
+    rgb(250, 177, 160) 100%
   );
 }
 
@@ -216,14 +222,15 @@ main {
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
-  height: 15rem;
+  height: 13rem;
 }
 .custom-shape-divider-bottom-1696038172 .shape-fill {
-  fill: #ffbd60;
+  fill: #f59e0b;
 }
 
 main .section-hero {
-  height: 70vh;
+  /* height: 70vh; */
+  min-height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
