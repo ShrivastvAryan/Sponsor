@@ -1,31 +1,5 @@
-// import sponsorList from "../api/sponsorList.json";
-// import { CountryCard } from "../Components/Ui/CountryCard";
-
-// export const Explore = () => {
-//   return (
-//     <>
-//       <section className="country-section container ">
-//         {/* <SearchFilter
-//           search={search}
-//           setSearch={setSearch}
-//           filter={filter}
-//           setFilter={setFilter}
-//           data={data}
-//           setData={setData}
-//         /> */}
-
-//         <ul className="grid grid-three-cols">
-//           {sponsorList.map((curData) => {
-//             return <CountryCard key={curData.id} curData={curData} />;
-//           })}
-//         </ul>
-//       </section>
-//     </>
-//   );
-// };
-
-//! NEW Code
 import "./Explore.css";
+import sponsors from "../api/sponsorList.json";
 import { useState } from "react";
 import { Search, Filter, Phone, Mail, Building2, Calendar } from "lucide-react";
 
@@ -34,63 +8,6 @@ export const Explore = () => {
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [selectedSponsors, setSelectedSponsors] = useState([]);
 
-  const sponsors = [
-    {
-      id: 1,
-      name: "Google",
-      eventType: "Hackathon",
-      sponsorshipType: "monetary",
-      email: "sponsorships@google.com",
-      phone: "+1-800-555-0191",
-      logo: "/api/placeholder/150/100",
-    },
-    {
-      id: 2,
-      name: "Microsoft",
-      eventType: "Student Fest",
-      sponsorshipType: "monetary",
-      email: "events@microsoft.com",
-      phone: "+1-800-642-7676",
-      logo: "/api/placeholder/150/100",
-    },
-    {
-      id: 3,
-      name: "Amazon Web Services",
-      eventType: "Hackathon",
-      sponsorshipType: "monetary",
-      email: "sponsorships@aws.amazon.com",
-      phone: "+1-888-280-4331",
-      logo: "/api/placeholder/150/100",
-    },
-    {
-      id: 4,
-      name: "Meta",
-      eventType: "Conference",
-      sponsorshipType: "in-kind",
-      email: "partnerships@meta.com",
-      phone: "+1-650-543-4800",
-      logo: "/api/placeholder/150/100",
-    },
-    {
-      id: 5,
-      name: "Apple",
-      eventType: "Workshop",
-      sponsorshipType: "monetary",
-      email: "events@apple.com",
-      phone: "+1-408-996-1010",
-      logo: "/api/placeholder/150/100",
-    },
-    {
-      id: 6,
-      name: "Netflix",
-      eventType: "Student Fest",
-      sponsorshipType: "in-kind",
-      email: "university@netflix.com",
-      phone: "+1-408-540-3700",
-      logo: "/api/placeholder/150/100",
-    },
-  ];
-
   const eventTypes = [
     "all",
     "Hackathon",
@@ -98,7 +15,8 @@ export const Explore = () => {
     "Conference",
     "Workshop",
   ];
-  const sponsorshipTypes = ["All Categories", "monetary", "in-kind"];
+
+  // const sponsorshipTypes = ["All Categories", "monetary", "in-kind"];
 
   const filteredSponsors = sponsors.filter((sponsor) => {
     const matchesSearch =
@@ -132,52 +50,25 @@ export const Explore = () => {
       <div className="main-container">
         <section className="controls">
           <div className="controls-inner">
-            {/* className: input-wraper */}
-            <div>
-              <input
-                type="text"
-                placeholder="🔍 Search sponsors or events..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input"
-              />
-            </div>
-            {/* removing className: select-wraper */}
-            <div>
-              {/* <Filter size={16} className="input-icon" /> */}
-              {/* <select
-                value={selectedFilter}
-                onChange={(e) => setSelectedFilter(e.target.value)}
-                className="select-box"
-              >
-                <option value="all">All Categories</option>
-                <optgroup label="Event Types">
-                  {eventTypes.slice(1).map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
-                </optgroup>
-                <optgroup label="Sponsorship Types">
-                  {sponsorshipTypes.slice(1).map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
-                </optgroup>
-              </select> */}
-              <select
-                className="filter-select"
-                value={selectedFilter}
-                onChange={(e) => setSelectedFilter(e.target.value)}
-              >
-                {eventTypes.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <input
+              type="text"
+              placeholder="🔍 Search sponsors or events..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-input"
+            />
+
+            <select
+              className="filter-select"
+              value={selectedFilter}
+              onChange={(e) => setSelectedFilter(e.target.value)}
+            >
+              {eventTypes.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
 
             <div className="bulk-actions">
               <button

@@ -1,83 +1,56 @@
 [
   {
     "id": 1,
-    "img": "",
-    "companyName": "Google",
+    "name": "Google",
     "eventType": "Hackathon",
     "sponsorshipType": "monetary",
     "email": "sponsorships@google.com",
-    "phoneNumber": "+1-800-555-0191"
+    "phone": "+1-800-555-0191",
+    "logo": "/api/placeholder/150/100"
   },
   {
     "id": 2,
-    "companyName": "Microsoft",
-    "img": "",
+    "name": "Microsoft",
     "eventType": "Student Fest",
     "sponsorshipType": "monetary",
     "email": "events@microsoft.com",
-    "phoneNumber": "+1-800-642-7676"
+    "phone": "+1-800-642-7676",
+    "logo": "/api/placeholder/150/100"
   },
   {
     "id": 3,
-    "companyName": "Amazon Web Services",
-    "img": "",
+    "name": "Amazon Web Services",
     "eventType": "Hackathon",
     "sponsorshipType": "monetary",
     "email": "sponsorships@aws.amazon.com",
-    "phoneNumber": "+1-888-280-4331"
+    "phone": "+1-888-280-4331",
+    "logo": "/api/placeholder/150/100"
   },
   {
     "id": 4,
-    "companyName": "GitHub",
-    "img": "",
-    "eventType": "Open Source",
-    "sponsorshipType": "monetary",
-    "email": "sponsors@github.com",
-    "phoneNumber": "+1-415-448-6673"
+    "name": "Meta",
+    "eventType": "Conference",
+    "sponsorshipType": "in-kind",
+    "email": "partnerships@meta.com",
+    "phone": "+1-650-543-4800",
+    "logo": "/api/placeholder/150/100"
   },
   {
     "id": 5,
-    "companyName": "Intel",
-    "img": "",
-    "eventType": "Tech Fest",
+    "name": "Apple",
+    "eventType": "Workshop",
     "sponsorshipType": "monetary",
-    "email": "university@intel.com",
-    "phoneNumber": "+1-800-628-8686"
+    "email": "events@apple.com",
+    "phone": "+1-408-996-1010",
+    "logo": "/api/placeholder/150/100"
   },
   {
     "id": 6,
-    "companyName": "NVIDIA",
-    "img": "",
-    "eventType": "AI Summit",
-    "sponsorshipType": "monetary",
-    "email": "events@nvidia.com",
-    "phoneNumber": "+1-408-486-2000"
-  },
-  {
-    "id": 7,
-    "companyName": "Zomato",
-    "img": "",
-    "eventType": "College Fest",
-    "sponsorshipType": "monetary",
-    "email": "brand@zomato.com",
-    "phoneNumber": "+91-11-30806376"
-  },
-  {
-    "id": 8,
-    "companyName": "Tata Consultancy Services",
-    "img": "",
-    "eventType": "Tech Symposium",
-    "sponsorshipType": "monetary",
-    "email": "campusconnect@tcs.com",
-    "phoneNumber": "+91-22-6778-9999"
-  },
-  {
-    "id": 9,
-    "companyName": "PW",
-    "img": "",
-    "eventType": "Hackathon",
-    "sponsorshipType": "monetary",
-    "email": "",
-    "phoneNumber": ""
+    "name": "Netflix",
+    "eventType": "Student Fest",
+    "sponsorshipType": "in-kind",
+    "email": "university@netflix.com",
+    "phone": "+1-408-540-3700",
+    "logo": "/api/placeholder/150/100"
   }
 ]

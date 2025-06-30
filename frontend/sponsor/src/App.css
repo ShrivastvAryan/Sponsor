@@ -396,7 +396,8 @@ main .section-hero {
 
 footer {
   width: 100%;
-  background: #f0ddc2;
+  /* background: #f0ddc2; */
+  background: linear-gradient(135deg, #e8ddb0 0%, #fed7aa 100%);
   color: #000;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
