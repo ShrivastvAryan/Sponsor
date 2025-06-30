@@ -41,39 +41,6 @@
   /* justify-content: space-between; */
 }
 
-/* .input-wrapper,
-.select-wrapper {
-  position: relative;
-  min-width: 200px;
-  flex: 1;
-} */
-
-/***** Trial Section *****/
-
-/* .input-wrapper,
-.select-wrapper {
-  display: flex;
-  align-items: center;
-  border: 2px solid #fbbf77;
-  border-radius: 10px;
-  padding: 0.5rem 1rem;
-  background: #fff;
-  box-shadow: 0 0 5px rgba(251, 191, 119, 0.4);
-  transition: box-shadow 0.3s ease-in-out;
-  margin-right: 1rem;
-}
-
-.input-wrapper:hover,
-.select-wrapper:hover {
-  box-shadow: 0 0 8px rgba(251, 191, 119, 0.6);
-} */
-
-/* .input-icon {
-  color: #f97316; 
-  margin-right: 0.5rem;
-  flex-shrink: 0;
-} */
-
 /* Input Styling */
 .search-input {
   display: flex;
@@ -104,32 +71,6 @@
   transform: scale(1.02);
   box-shadow: 0 8px 25px rgba(255, 165, 0, 0.3);
 }
-
-/* Select Dropdown Styling */
-/* .select-box {
-  border: none;
-  outline: none;
-  font-size: 1.25rem;
-  background: transparent;
-  color: #000;
-  appearance: none; 
-  width: 100%;
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-.select-wrapper {
-  position: relative;
-}
-
-.select-wrapper::after {
-  content: "▾";
-  font-size: 1rem;
-  color: #333;
-  position: absolute;
-  right: 12px;
-  pointer-events: none;
-} */
 
 .filter-select {
   padding: 1rem 1.5rem;
@@ -181,8 +122,6 @@
   display: inline-block;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-
-/***** End Trial Section *****/
 
 /* ========== Sponsors Grid ========== */
 

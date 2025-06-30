@@ -1,38 +1,6 @@
-// import sponsorList from "../api/sponsorList.json";
-// export const About = () => {
-//   return (
-//     <>
-//       <div className="section-about container">
-//         <h2 className="container-title ">Our Top Sponsors</h2>
-//         <div className="gradient-cards ">
-//           {sponsorList.map((curData) => {
-//             const { id, companyName, eventType, sponsorshipType } = curData;
-//             return (
-//               <div className="card" key={id}>
-//                 <div className="container-card bg-yellow-box">
-//                   <p className="card-title">{companyName}</p>
-//                   <p>
-//                     <span className="card-description">Type of Event:</span>
-//                     {eventType}
-//                   </p>
-//                   <p>
-//                     <span className="card-description">
-//                       Type of Sponsorship:
-//                     </span>
-//                     {sponsorshipType}
-//                   </p>
-//                 </div>
-//               </div>
-//             );
-//           })}
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
 import "./About.css";
 import React, { useEffect, useState } from "react";
+import abtEvent from "../api/abtEvent.json";
 
 export const About = () => {
   const [isVisible, setIsVisible] = useState({});
@@ -332,44 +300,7 @@ export const About = () => {
           </div>
 
           <div className="serve-grid">
-            {[
-              {
-                icon: "💻",
-                title: "Tech Events",
-                desc: "Find tech companies interested in innovation and development",
-                color: "orange",
-              },
-              {
-                icon: "🎓",
-                title: "Educational Events",
-                desc: "Connect with companies supporting education and learning",
-                color: "yellow",
-              },
-              {
-                icon: "🎨",
-                title: "Creative Events",
-                desc: "Discover brands that value creativity and artistic expression",
-                color: "orange",
-              },
-              {
-                icon: "🚀",
-                title: "Startup Events",
-                desc: "Access companies and investors interested in entrepreneurship",
-                color: "yellow",
-              },
-              {
-                icon: "🌱",
-                title: "Community Events",
-                desc: "Find local businesses and organizations supporting communities",
-                color: "orange",
-              },
-              {
-                icon: "🏆",
-                title: "Sports & Gaming",
-                desc: "Connect with sponsors for competitive and recreational events",
-                color: "yellow",
-              },
-            ].map((item, index) => (
+            {abtEvent.map((item, index) => (
               <div
                 key={index}
                 className={`serve-card serve-delay-${index + 1} ${item.color}`}

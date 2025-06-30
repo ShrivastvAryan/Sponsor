@@ -101,6 +101,7 @@ body {
   padding: 100px 20px;
   background: var(--gradient-hero);
   overflow: hidden;
+  margin-top: 2rem;
 }
 
 .hero-section::before {
