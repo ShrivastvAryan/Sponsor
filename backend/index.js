@@ -95,6 +95,8 @@ app.post('/removesponsor',async(req,res)=>{
     })
 })
 
+//API for getting top products
+
 app.get('/topsponsor', async (req, res) => {
     try {
         const sponsors = await Sponsor.find({});
@@ -107,19 +109,15 @@ app.get('/topsponsor', async (req, res) => {
 });
 
 app.get('/:category/sponsor',async(req,res)=>{
+    const {category}=req.params
     try {
-        const {category}=req.params
-
         const sponsor= await Sponsor.find({category})
         console.log(`${category} is fetched`)
         res.send(sponsor)
     } catch (error) {
-        console.error(`Error in fetching the ${category}`,error )
         res.status(500).send({error:"Ann error occurred while fetching"})
     }
 })
-
-//API for getting all products
 
 app.listen(PORT,(error)=>{
     if(!error){
