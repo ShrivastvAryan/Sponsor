@@ -67,7 +67,7 @@ export default function BusinessForm() {
       }));
     }
     
-    // Clear error when user starts typing
+  
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -79,7 +79,7 @@ export default function BusinessForm() {
   const handleLogoUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      if (file.size > 5 * 1024 * 1024) { // 5MB limit
+      if (file.size > 5 * 1024 * 1024) { 
         setErrors(prev => ({...prev, logo: 'File size must be less than 5MB'}));
         return;
       }
@@ -90,15 +90,14 @@ export default function BusinessForm() {
       }
 
       setLogoFile(file);
-      
-      // Create preview
+  
       const reader = new FileReader();
       reader.onload = (e) => {
         setLogoPreview(e.target.result);
       };
       reader.readAsDataURL(file);
       
-      // Clear error
+  
       setErrors(prev => ({...prev, logo: ''}));
     }
   };
@@ -125,8 +124,7 @@ export default function BusinessForm() {
     } else if (!/^\+?[\d\s\-\(\)]+$/.test(formData.phoneNumber)) {
       newErrors.phoneNumber = 'Please enter a valid phone number';
     }
-    
-    // Validate social media URLs if provided
+
     const urlPattern = /^https?:\/\/.+/;
     Object.entries(formData.socialMedia).forEach(([platform, url]) => {
       if (url && !urlPattern.test(url)) {
