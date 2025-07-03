@@ -10,7 +10,8 @@ import {
   Phone,
   Tag,
   Link,
-  Image
+  Image,
+  Mail
 } from 'lucide-react';
 
 export default function BusinessForm() {
@@ -140,14 +141,6 @@ export default function BusinessForm() {
     } else if (!/^\+?[\d\s\-\(\)]+$/.test(formData.phoneNumber)) {
       newErrors.phoneNumber = 'Please enter a valid phone number';
     }
-
-    // Validate social media URLs
-    const urlPattern = /^https?:\/\/.+/;
-    Object.entries(formData.socialMedia).forEach(([platform, url]) => {
-      if (url && !urlPattern.test(url)) {
-        newErrors[`social_${platform}`] = 'Please enter a valid URL (starting with http:// or https://)';
-      }
-    });
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -310,7 +303,7 @@ export default function BusinessForm() {
             <div>
               <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
                 <Phone className="w-4 h-4 mr-2" />
-                Phone Number *
+                Phone Number 
               </label>
               <input
                 type="tel"
@@ -325,18 +318,20 @@ export default function BusinessForm() {
               {errors.phoneNumber && <p className="text-red-500 text-sm mt-1">{errors.phoneNumber}</p>}
             </div>
 
+
             {/* Social Media Links */}
             <div className="space-y-4">
               <h3 className="flex items-center text-lg font-medium text-gray-800">
                 <Link className="w-5 h-5 mr-2" />
-                Social Media Links
+                Contact Details
               </h3>
               
-              {/* Facebook */}
+              {/* Email */}
               <div>
                 <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                  <Facebook className="w-4 h-4 mr-2 text-blue-600" />
-                  Facebook
+                    <Mail className="w-4 h-4 mr-2" />
+                
+                  E-Mail
                 </label>
                 <input
                   type="url"
@@ -346,16 +341,15 @@ export default function BusinessForm() {
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
                     errors.social_facebook ? 'border-red-500 bg-red-50' : 'border-gray-300'
                   }`}
-                  placeholder="https://facebook.com/yourpage"
+                 
                 />
-                {errors.social_facebook && <p className="text-red-500 text-sm mt-1">{errors.social_facebook}</p>}
               </div>
 
               {/* Twitter */}
               <div>
                 <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                  <Twitter className="w-4 h-4 mr-2 text-blue-400" />
-                  Twitter
+                
+                  Contact-1
                 </label>
                 <input
                   type="url"
@@ -365,16 +359,16 @@ export default function BusinessForm() {
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
                     errors.social_twitter ? 'border-red-500 bg-red-50' : 'border-gray-300'
                   }`}
-                  placeholder="https://twitter.com/youraccount"
+                  
                 />
-                {errors.social_twitter && <p className="text-red-500 text-sm mt-1">{errors.social_twitter}</p>}
+               
               </div>
 
               {/* Instagram */}
               <div>
                 <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                  <Instagram className="w-4 h-4 mr-2 text-pink-500" />
-                  Instagram
+                  
+                  Contact-2
                 </label>
                 <input
                   type="url"
@@ -384,9 +378,9 @@ export default function BusinessForm() {
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
                     errors.social_instagram ? 'border-red-500 bg-red-50' : 'border-gray-300'
                   }`}
-                  placeholder="https://instagram.com/youraccount"
+                  
                 />
-                {errors.social_instagram && <p className="text-red-500 text-sm mt-1">{errors.social_instagram}</p>}
+               
               </div>
             </div>
 

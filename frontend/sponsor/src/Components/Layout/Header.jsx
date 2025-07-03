@@ -6,7 +6,7 @@ export const Header = () => {
       <header className="section-navbar">
         <div className="container">
           <div className="navbar-brand">
-            <NavLink to="index.html">SPONSOR</NavLink>
+            <NavLink to="/">SPONSOR</NavLink>
           </div>
 
           <nav className="navbar">
