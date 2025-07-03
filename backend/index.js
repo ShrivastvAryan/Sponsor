@@ -12,7 +12,7 @@ const path=require('path');
 app.use(express.json());
 app.use(cors());
 
-// Cloudinary configuration
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -55,6 +55,13 @@ const Sponsor = mongoose.model("Sponsor", {
   link3: {
     type: String,
   },
+});
+
+app.get('/testing', (req, res) => {
+  res.json({
+    success: true,
+    message: "Server is running"
+  });
 });
 
 // Combined API for creating sponsor with logo upload

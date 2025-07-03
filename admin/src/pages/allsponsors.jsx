@@ -23,7 +23,7 @@ const AllSponsors = () => {
         try {
             setIsLoading(true);
             setError(null);
-            const response = await fetch('http://localhost:4000/allsponsor');
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/allsponsor`)
             
             if (response.ok) {
                 const data = await response.json();
@@ -70,7 +70,7 @@ const AllSponsors = () => {
 
         try {
             setDeletingId(id);
-            const response = await fetch('http://localhost:4000/removesponsor', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/removesponsor`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
