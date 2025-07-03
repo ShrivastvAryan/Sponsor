@@ -17,7 +17,6 @@ export default function BusinessForm() {
   const [formData, setFormData] = useState({
     name: '',
     category1: '',
-    category2: '',
     phoneNumber: '',
     socialMedia: {
       facebook: '',
@@ -49,6 +48,19 @@ export default function BusinessForm() {
     'Other'
   ];
 
+  const showToast = (message, type = 'success') => {
+    const toastDiv = document.createElement('div');
+    toastDiv.className = `fixed top-4 right-4 p-4 rounded-lg text-white z-50 ${
+      type === 'success' ? 'bg-green-500' : 'bg-red-500'
+    }`;
+    toastDiv.textContent = message;
+    document.body.appendChild(toastDiv);
+    
+    setTimeout(() => {
+      document.body.removeChild(toastDiv);
+    }, 5000);
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name.startsWith('social_')) {
@@ -67,7 +79,7 @@ export default function BusinessForm() {
       }));
     }
     
-  
+    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -97,7 +109,7 @@ export default function BusinessForm() {
       };
       reader.readAsDataURL(file);
       
-  
+      // Clear logo error
       setErrors(prev => ({...prev, logo: ''}));
     }
   };
@@ -105,18 +117,22 @@ export default function BusinessForm() {
   const removeLogo = () => {
     setLogoFile(null);
     setLogoPreview(null);
-    document.getElementById('logo-upload').value = '';
+    const fileInput = document.getElementById('logo-upload');
+    if (fileInput) {
+      fileInput.value = '';
+    }
   };
 
   const validateForm = () => {
     const newErrors = {};
     
+    // Fix: Check name instead of name
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = 'Business name is required';
     }
     
     if (!formData.category1) {
-      newErrors.category1 = 'Category 1 is required';
+      newErrors.category1 = 'category is required';
     }
     
     if (!formData.phoneNumber.trim()) {
@@ -125,6 +141,7 @@ export default function BusinessForm() {
       newErrors.phoneNumber = 'Please enter a valid phone number';
     }
 
+    // Validate social media URLs
     const urlPattern = /^https?:\/\/.+/;
     Object.entries(formData.socialMedia).forEach(([platform, url]) => {
       if (url && !urlPattern.test(url)) {
@@ -136,16 +153,59 @@ export default function BusinessForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
-      // Form is valid, process submission
-      console.log('Form Data:', formData);
-      console.log('Logo File:', logoFile);
-      
-      // Here you would typically send the data to your backend
-      alert('Form submitted successfully!');
+      try {
+        const form = new FormData();
+
+        form.append('name', formData.name);
+        form.append('category1', formData.category1);
+        form.append('phoneNumber', formData.phoneNumber);
+        
+        if (logoFile) {
+          form.append('logo', logoFile);
+        }
+
+    
+        form.append('facebook', formData.socialMedia.facebook);
+        form.append('twitter', formData.socialMedia.twitter);
+        form.append('instagram', formData.socialMedia.instagram);
+
+        const res = await fetch('http://localhost:4000/addsponsor', {
+          method: 'POST',
+          body: form,
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          console.log('Server Response:', data);
+          showToast('Sponsor Submitted Successfully', 'success');
+          
+          setFormData({
+            name: '',
+            category1: '',
+            category2: '',
+            phoneNumber: '',
+            socialMedia: {
+              facebook: '',
+              twitter: '',
+              instagram: ''
+            }
+          });
+          setLogoFile(null);
+          setLogoPreview(null);
+          setErrors({});
+        } else {
+          console.error('Error submitting:', data);
+          showToast(`Error: ${data.error || 'Failed to submit sponsor'}`, 'error');
+        }
+      } catch (err) {
+        console.error('Submission error:', err);
+        showToast(`Error: ${err.message || 'Failed to submit sponsor'}`, 'error');
+      }
     }
   };
 
@@ -159,7 +219,7 @@ export default function BusinessForm() {
           </div>
 
           <div className="space-y-6">
-            {/* Name Field */}
+            {/* Business Name Field */}
             <div>
               <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
                 <User className="w-4 h-4 mr-2" />
@@ -178,7 +238,7 @@ export default function BusinessForm() {
               {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
             </div>
 
-            {/* Category 1 */}
+            {/* Primary Category */}
             <div>
               <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
                 <Tag className="w-4 h-4 mr-2" />
@@ -244,25 +304,6 @@ export default function BusinessForm() {
                 </label>
               </div>
               {errors.logo && <p className="text-red-500 text-sm mt-1">{errors.logo}</p>}
-            </div>
-
-            {/* Category 2 */}
-            <div>
-              <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
-                <Tag className="w-4 h-4 mr-2" />
-                Secondary Category
-              </label>
-              <select
-                name="category2"
-                value={formData.category2}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              >
-                <option value="">Select secondary category (optional)</option>
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
-                ))}
-              </select>
             </div>
 
             {/* Phone Number */}
@@ -352,9 +393,9 @@ export default function BusinessForm() {
             {/* Submit Button */}
             <div className="pt-6">
               <button
-                type="button"
-                onClick={handleSubmit}
+                type="submit"
                 className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 px-6 rounded-lg font-medium hover:from-blue-600 hover:to-indigo-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 flex items-center justify-center"
+                onClick={handleSubmit}
               >
                 <Save className="w-5 h-5 mr-2" />
                 Save Business Information
