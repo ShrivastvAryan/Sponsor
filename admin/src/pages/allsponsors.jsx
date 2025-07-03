@@ -80,10 +80,7 @@ const AllSponsors = () => {
             });
 
             if (response.ok) {
-                // Remove the sponsor from the local state
                 setAllSponsors(prev => prev.filter(sponsor => sponsor.id !== id));
-                
-                // Show success toast (you can implement this with your preferred toast library)
                 console.log('Sponsor removed successfully');
             } else {
                 throw new Error('Failed to remove sponsor');

@@ -2,9 +2,6 @@ import { useState } from 'react';
 import { 
   Upload, 
   X, 
-  Facebook, 
-  Twitter, 
-  Instagram, 
   Save,
   User,
   Phone,
@@ -20,7 +17,7 @@ export default function BusinessForm() {
     category1: '',
     phoneNumber: '',
     socialMedia: {
-      facebook: '',
+      email: '',
       twitter: '',
       instagram: ''
     }
@@ -136,11 +133,6 @@ export default function BusinessForm() {
       newErrors.category1 = 'category is required';
     }
     
-    if (!formData.phoneNumber.trim()) {
-      newErrors.phoneNumber = 'Phone number is required';
-    } else if (!/^\+?[\d\s\-\(\)]+$/.test(formData.phoneNumber)) {
-      newErrors.phoneNumber = 'Please enter a valid phone number';
-    }
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -162,7 +154,7 @@ export default function BusinessForm() {
         }
 
     
-        form.append('facebook', formData.socialMedia.facebook);
+        form.append('email', formData.socialMedia.email);
         form.append('twitter', formData.socialMedia.twitter);
         form.append('instagram', formData.socialMedia.instagram);
 
@@ -183,7 +175,7 @@ export default function BusinessForm() {
             category2: '',
             phoneNumber: '',
             socialMedia: {
-              facebook: '',
+              email: '',
               twitter: '',
               instagram: ''
             }
@@ -335,11 +327,11 @@ export default function BusinessForm() {
                 </label>
                 <input
                   type="url"
-                  name="social_facebook"
-                  value={formData.socialMedia.facebook}
+                  name="social_email"
+                  value={formData.socialMedia.email}
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                    errors.social_facebook ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                    errors.social_email ? 'border-red-500 bg-red-50' : 'border-gray-300'
                   }`}
                  
                 />
@@ -392,7 +384,7 @@ export default function BusinessForm() {
                 onClick={handleSubmit}
               >
                 <Save className="w-5 h-5 mr-2" />
-                Save Business Information
+                Save Company
               </button>
             </div>
           </div>
