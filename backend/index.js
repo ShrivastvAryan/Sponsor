@@ -157,7 +157,7 @@ app.post('/removesponsor',async(req,res)=>{
 
     res.json({
         success:true,
-        company_name:req.body.company_name
+        company_name:req.body.name
     })
 })
 
