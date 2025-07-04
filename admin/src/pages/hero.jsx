@@ -167,7 +167,7 @@ export default function BusinessForm() {
 
         if (res.ok) {
           console.log('Server Response:', data);
-          showToast('Sponsor Submitted Successfully', 'success');
+          showToast('Company Submitted Successfully', 'success');
           
           setFormData({
             name: '',
@@ -185,11 +185,11 @@ export default function BusinessForm() {
           setErrors({});
         } else {
           console.error('Error submitting:', data);
-          showToast(`Error: ${data.error || 'Failed to submit sponsor'}`, 'error');
+          showToast(`Error: ${data.error || 'Failed to submit company'}`, 'error');
         }
       } catch (err) {
         console.error('Submission error:', err);
-        showToast(`Error: ${err.message || 'Failed to submit sponsor'}`, 'error');
+        showToast(`Error: ${err.message || 'Failed to submit company'}`, 'error');
       }
     }
   };
@@ -384,7 +384,7 @@ export default function BusinessForm() {
                 onClick={handleSubmit}
               >
                 <Save className="w-5 h-5 mr-2" />
-                Save Company
+                Submit Company
               </button>
             </div>
           </div>

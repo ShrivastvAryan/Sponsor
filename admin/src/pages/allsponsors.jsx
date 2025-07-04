@@ -119,7 +119,7 @@ const AllSponsors = () => {
             <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
                 <div className="text-center">
                     <Loader2 className="w-12 h-12 animate-spin text-blue-600 mx-auto mb-4" />
-                    <p className="text-gray-600 text-lg">Loading sponsors...</p>
+                    <p className="text-gray-600 text-lg">Loading Companies...</p>
                 </div>
             </div>
         );
@@ -150,14 +150,14 @@ const AllSponsors = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                     <div className="text-center">
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
-                            All Sponsors
+                            All Companies
                         </h1>
                         <p className="text-lg text-gray-600">
-                            Manage and view all your sponsors in one place
+                            Manage and view all your companies in one place
                         </p>
                         <div className="mt-4 flex justify-center">
                             <div className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
-                                {filteredSponsors.length} of {sponsors.length} {sponsors.length === 1 ? 'Sponsor' : 'Sponsors'}
+                                {filteredSponsors.length} of {sponsors.length} {sponsors.length === 1 ? 'Sponsor' : 'Companies'}
                             </div>
                         </div>
                     </div>
