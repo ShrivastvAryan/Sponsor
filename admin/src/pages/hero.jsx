@@ -158,7 +158,7 @@ export default function BusinessForm() {
         form.append('twitter', formData.socialMedia.twitter);
         form.append('instagram', formData.socialMedia.instagram);
 
-        const res = await fetch('http://localhost:4000/addsponsor', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/addsponsor`, {
           method: 'POST',
           body: form,
         });
