@@ -1,12 +1,29 @@
 import "./Explore.css";
 import sponsors from "../api/sponsorList.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Search, Filter, Phone, Mail, Building2, Calendar } from "lucide-react";
 
 export const Explore = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [selectedSponsors, setSelectedSponsors] = useState([]);
+  const[isCompanies,setIsComapnies]=useState([])
+
+  //API fetching from backend
+
+  useEffect(() => {
+  const fetchSponsors = async () => {
+    try {
+      const response = await fetch('https://sponsor-rgac.onrender.com/allsponsor');
+      const data = await response.json();
+      setIsComapnies(data);
+    } catch (error) {
+      console.error("Error in fetching the data", error);
+    }
+  };
+
+  fetchSponsors();
+}, []);
 
   const eventTypes = [
     "all",
