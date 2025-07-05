@@ -5,21 +5,41 @@ export const HeroSection = () => {
     <>
       <main>
         <section className="section-hero">
-          <div className="container grid">
-            <h1 className="hero-heading">
-              <span className="roboto">PR </span>
-              <span className="kaushan-script-regular">made </span>
-              <span className="fruktur-regular">Easy </span>
-            </h1>
-            <p className="hero-para">
-              subtiitle subtitle subtitlesubtiitle subtitle subtitle
-            </p>
-            <div className="hero-btn">
-              <NavLink to="/explore" className="btn">
-                Explore Now
-              </NavLink>
+          <div className="hero-background">
+            <div className="floating-elements">
+              <div className="float-element float-1"></div>
+              <div className="float-element float-2"></div>
+              <div className="float-element float-3"></div>
+              <div className="float-element float-4"></div>
             </div>
           </div>
+
+          <div className="container grid">
+            <div className="hero-content">
+              <h1 className="hero-heading">
+                <span className="roboto">PR </span>
+                <span className="kaushan-script-regular">made </span>
+                <span className="fruktur-regular">Easy</span>
+                <div className="heading-glow"></div>
+              </h1>
+              <p className="hero-para">
+                Transform your public relations with cutting-edge tools and
+                innovative strategies that deliver real results
+              </p>
+              <div className="hero-btn">
+                <NavLink to="/explore" className="btn">
+                  <span>Explore Now</span>
+                  <div className="btn-glow"></div>
+                  <div className="btn-particles">
+                    <div className="particle particle-1"></div>
+                    <div className="particle particle-2"></div>
+                    <div className="particle particle-3"></div>
+                  </div>
+                </NavLink>
+              </div>
+            </div>
+          </div>
+
           <div className="custom-shape-divider-bottom-1696038172">
             <svg
               data-name="Layer 1"

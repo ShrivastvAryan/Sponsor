@@ -2,12 +2,10 @@
 .page-wrapper {
   min-height: 100vh;
   margin-top: 3rem;
-  /*background-color: #fef7ed;
-  */
   background: linear-gradient(
     135deg,
-    rgb(255, 244, 167) 0%,
-    rgb(250, 177, 160) 100%
+    rgb(246, 234, 139) 0%,
+    rgb(246, 142, 119) 100%
   );
   font-family: system-ui, -apple-system, sans-serif;
   border-radius: 10px;
@@ -25,12 +23,13 @@
 }
 
 .controls {
-  background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+  /*background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+  */
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(251, 146, 60, 0.1);
+  /* border-radius: 12px; */
+  /* box-shadow: 0 4px 6px rgba(251, 146, 60, 0.1); */
   margin-bottom: 2rem;
-  border: 1px solid #fed7aa;
+  /* border: 1px solid #fed7aa; */
 }
 
 .controls-inner {
