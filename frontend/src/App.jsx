@@ -1,12 +1,12 @@
-import "./App.css";
+// import './App.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./Pages/Home";
+import { AppLayout } from "./Components/layout/AppLayout";
 import { About } from "./Pages/About";
 import { Contact } from "./Pages/Contact";
-import { Explore } from "./Pages/Explore";
-import { AppLayout } from "./Components/Layout/AppLayout";
+import { Connect } from "./Pages/Connect";
 
-function App() {
+export const App = () => {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -25,14 +25,12 @@ function App() {
           element: <Contact />,
         },
         {
-          path: "explore",
-          element: <Explore />,
+          path: "/connect",
+          element: <Connect />,
         },
       ],
     },
   ]);
 
   return <RouterProvider router={router} />;
-}
-
-export default App;
+};
