@@ -202,45 +202,19 @@ export const Footer = () => {
           </div>
 
           {/* Legal */}
-          <div className="md:col-span-1">
-            <h3 className="text-white font-semibold mb-4">Legal</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <NavLink
-                  to="/privacy-policy"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Privacy Policy
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/terms-of-service"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Terms of Service
-                </NavLink>
-              </li>
-            </ul>
-          </div>
+    
 
           {/* Follow Us */}
           <div className="md:col-span-1">
-            <h3 className="text-white font-semibold mb-4">Follow Us</h3>
-            <div className="flex space-x-3">
-              {socialLinks.map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center 
-                           hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 
-                           transition-all duration-300 transform hover:scale-110 hover:rotate-12
-                           group backdrop-blur-sm"
-                  aria-label={label}
-                >
-                  <Icon className="w-5 h-5 group-hover:text-white transition-colors duration-300" />
-                </a>
-              ))}
+            <h3 className="text-white font-semibold mb-4">Disclaimer</h3>
+            <div className="flex h-auto w-90vw lg:w-[30rem]  p-1 text-sm text-justify text-gray-400">
+            This website helps users discover potential sponsors. While we aim for accurate and reliable content, we do not guarantee the legitimacy, availability, or success of any sponsorship opportunity.
+
+            We do not endorse or take responsibility for any actions, agreements, or transactions between users and sponsors. All decisions are made solely at the users' own risk.
+
+            By using this platform, you agree that we are not liable for any loss, dispute, or damage resulting from interactions with sponsors. Always conduct your own research before entering into any sponsorship arrangement.
+
+
             </div>
           </div>
         </div>

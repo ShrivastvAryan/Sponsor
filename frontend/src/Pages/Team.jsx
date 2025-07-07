@@ -26,7 +26,7 @@ export const Team = () => {
     {
       name: "Drishti Goel",
       role: "UI/UX & Database",
-      image: "../../public/drishtiPic.png",
+      image: "/drishtiPic.png",
       bio: "UI/UX and database developer maintaining sponsor records and crafting seamless user experiences for the platform.",
       email: "drishti00982@gmail.com",
 
