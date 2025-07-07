@@ -144,15 +144,27 @@ export const Footer = () => {
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+            <div className="flex items-center  gap-2 mb-6">
+              {/* <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
                 <Star className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
                 Sponsors
-              </span>
+              </span> */}
+              <NavLink
+                to="/"
+                className="flex -mt-20  items-center space-x-3 group"
+              >
+                <div className="w-48 h-auto">
+                  <img
+                    src="/Click2sponsor.png" // ✅ No `/public` in path!
+                    alt="Click2Sponsor Logo"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </NavLink>
             </div>
-            <p className="text-purple-200 mb-6 leading-relaxed">
+            <p className="text-purple-200 -mt-15 mb-6 leading-relaxed">
               The ultimate platform connecting event organizers with ideal
               sponsors. Transform your events with perfect funding partners.
             </p>

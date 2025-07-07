@@ -6,8 +6,7 @@ export const Team = () => {
     {
       name: "Dharmesh Yadav",
       role: "Frontend Developer",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+      image: "https://avatars.githubusercontent.com/u/166201809?s=400&v=4",
       bio: "UI/UX enthusiast with expertise in modern frontend technologies and design systems.",
       email: "yadavDharmesh2306@gmail.com",
 
@@ -17,8 +16,7 @@ export const Team = () => {
     {
       name: "Aryan Shrivastava",
       role: "Full Stack Developer",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+      image: "https://avatars.githubusercontent.com/u/173984672?v=4",
       bio: "Passionate about creating scalable web applications and innovative solutions.",
       email: "reachtoaryan29@gmail.com",
 
@@ -28,8 +26,7 @@ export const Team = () => {
     {
       name: "Drishti Goel",
       role: "UI/UX & Database",
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
+      image: "../../public/drishtiPic.png",
       bio: "UI/UX and database developer maintaining sponsor records and crafting seamless user experiences for the platform.",
       email: "drishti00982@gmail.com",
 
@@ -103,12 +100,14 @@ export const Team = () => {
 
                 <div className="flex justify-center space-x-4">
                   <a
+                    target="_blank"
                     href={member.github}
                     className="p-2 bg-white/20 rounded-lg hover:bg-white/30 transition-colors"
                   >
                     <Github className="w-5 h-5 text-white" />
                   </a>
                   <a
+                    target="_blank"
                     href={member.linkedin}
                     className="p-2 bg-white/20 rounded-lg hover:bg-white/30 transition-colors"
                   >
