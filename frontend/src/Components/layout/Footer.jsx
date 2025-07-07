@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
   Star,
   ArrowRight,
@@ -140,7 +141,7 @@ export const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
@@ -155,9 +156,74 @@ export const Footer = () => {
               The ultimate platform connecting event organizers with ideal
               sponsors. Transform your events with perfect funding partners.
             </p>
+          </div>
 
-            {/* Social Links */}
-            <div className="flex gap-3">
+          {/* Navigation */}
+          <div className="md:col-span-1">
+            <h3 className="text-white font-semibold mb-4">Navigation</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <NavLink
+                  to="/"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/connect"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Find Sponsors
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/about"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  About
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Contact
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div className="md:col-span-1">
+            <h3 className="text-white font-semibold mb-4">Legal</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <NavLink
+                  to="/privacy-policy"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/terms-of-service"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Terms of Service
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+
+          {/* Follow Us */}
+          <div className="md:col-span-1">
+            <h3 className="text-white font-semibold mb-4">Follow Us</h3>
+            <div className="flex space-x-3">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -173,59 +239,14 @@ export const Footer = () => {
               ))}
             </div>
           </div>
-
-          {/* Links Sections */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category} className="space-y-4">
-              <h4 className="text-lg font-semibold text-white mb-4 relative">
-                {category}
-                <div className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
-              </h4>
-              <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-purple-200 hover:text-white transition-all duration-300 
-                               hover:translate-x-1 flex items-center gap-2 group"
-                    >
-                      <span
-                        className="w-0 group-hover:w-2 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 
-                                     transition-all duration-300 rounded-full"
-                      ></span>
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-purple-700/30 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-purple-200 text-sm">
-            © 2025 Sponsors. All rights reserved. Made with ❤️ by DataSmiths
-            organizers.
-          </div>
-          <div className="flex items-center gap-6 text-sm">
-            <a
-              href="#"
-              className="text-purple-200 hover:text-white transition-colors duration-300"
-            >
-              Status
-            </a>
-            <a
-              href="#"
-              className="text-purple-200 hover:text-white transition-colors duration-300"
-            >
-              Security
-            </a>
-            <div className="flex items-center gap-1 text-purple-200">
-              <span>🌟</span>
-              <span>Trusted by 10,000+ events</span>
-            </div>
-          </div>
+        <div className="py-6 border-t text-center border-purple-700/30 ">
+          <p className="text-gray-400 text-sm">Developed by team Data Smiths</p>
+          <p className="text-gray-400 text-sm mt-2">
+            © 2024 Sponsors. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

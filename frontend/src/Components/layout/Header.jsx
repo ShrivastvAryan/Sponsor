@@ -43,6 +43,15 @@ export const Header = () => {
               Sponsors
             </span>
           </NavLink>
+          {/* <NavLink to="/" className="flex items-center space-x-3 group">
+            <div className="w-30 h-30 ">
+              <img
+                src="/public/Click2sponsor.png"
+                alt="Click2Sponsor Logo"
+                className="w-34 h-30 object-contain"
+              />
+            </div>
+          </NavLink> */}
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
