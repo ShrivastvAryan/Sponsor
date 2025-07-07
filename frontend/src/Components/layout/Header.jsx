@@ -20,7 +20,7 @@ export const Header = () => {
     { id: "/", label: "Home" },
     { id: "/about", label: "About" },
     { id: "/connect", label: "Connect" },
-    { id: "/contact", label: "Contact" },
+    { id: "/Team", label: "Team" },
   ];
 
   return (
@@ -36,25 +36,17 @@ export const Header = () => {
         <nav className="flex items-center justify-between h-16 lg:h-20">
           {/* Brand Logo */}
           <NavLink to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-pink-400 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-purple-500/50 transition-all duration-300 group-hover:scale-110">
-              <Sparkles className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent group-hover:from-purple-200 group-hover:to-white transition-all duration-300">
-              Sponsors
-            </span>
-          </NavLink>
-          {/* <NavLink to="/" className="flex items-center space-x-3 group">
-            <div className="w-30 h-30 ">
+            <div className="w-48 h-auto">
               <img
-                src="/public/Click2sponsor.png"
+                src="/Click2sponsor.png" // ✅ No `/public` in path!
                 alt="Click2Sponsor Logo"
-                className="w-34 h-30 object-contain"
+                className="w-full h-auto object-contain"
               />
             </div>
-          </NavLink> */}
+          </NavLink>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center pt-1 space-x-8">
             {navigationItems.map((item) => (
               <NavLink
                 key={item.id}

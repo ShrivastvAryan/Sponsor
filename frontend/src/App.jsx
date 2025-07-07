@@ -3,8 +3,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home } from "./Pages/Home";
 import { AppLayout } from "./Components/layout/AppLayout";
 import { About } from "./Pages/About";
-import { Contact } from "./Pages/Contact";
 import { Connect } from "./Pages/Connect";
+import { Team } from "./Pages/Team";
 
 export const App = () => {
   const router = createBrowserRouter([
@@ -21,8 +21,8 @@ export const App = () => {
           element: <About />,
         },
         {
-          path: "contact",
-          element: <Contact />,
+          path: "team",
+          element: <Team />,
         },
         {
           path: "/connect",
