@@ -16,11 +16,10 @@ export default function BusinessForm() {
     name: '',
     category1: '',
     phoneNumber: '',
-    socialMedia: {
-      email: '',
-      twitter: '',
-      instagram: ''
-    }
+    email: '',
+    link2: '',
+    link3: ''
+    
   });
   
   const [logoFile, setLogoFile] = useState(null);
@@ -28,9 +27,10 @@ export default function BusinessForm() {
   const [errors, setErrors] = useState({});
 
   const categories = [
-    'Restaurant',
+    'Food and Beverage',
     'Technology',
     'Healthcare',
+    'Ed-Tech',
     'Education',
     'Retail',
     'Finance',
@@ -40,7 +40,6 @@ export default function BusinessForm() {
     'Travel',
     'Fashion',
     'Automotive',
-    'Construction',
     'Legal',
     'Marketing',
     'Other'
@@ -61,21 +60,10 @@ export default function BusinessForm() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name.startsWith('social_')) {
-      const socialPlatform = name.split('_')[1];
-      setFormData(prev => ({
-        ...prev,
-        socialMedia: {
-          ...prev.socialMedia,
-          [socialPlatform]: value
-        }
-      }));
-    } else {
       setFormData(prev => ({
         ...prev,
         [name]: value
       }));
-    }
     
     // Clear error when user starts typing
     if (errors[name]) {
@@ -133,7 +121,6 @@ export default function BusinessForm() {
       newErrors.category1 = 'category is required';
     }
     
-    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -152,11 +139,10 @@ export default function BusinessForm() {
         if (logoFile) {
           form.append('logo', logoFile);
         }
-
     
-        form.append('email', formData.socialMedia.email);
-        form.append('twitter', formData.socialMedia.twitter);
-        form.append('instagram', formData.socialMedia.instagram);
+        form.append('email', formData.email);
+        form.append('link2', formData.link2);
+        form.append('link3', formData.link3);
 
         const res = await fetch(`${import.meta.env.VITE_API_URL}/addsponsor`, {
           method: 'POST',
@@ -172,14 +158,12 @@ export default function BusinessForm() {
           setFormData({
             name: '',
             category1: '',
-            category2: '',
             phoneNumber: '',
-            socialMedia: {
-              email: '',
-              twitter: '',
-              instagram: ''
-            }
-          });
+            email: '',
+            link2: '',
+            link3: ''
+        });
+
           setLogoFile(null);
           setLogoPreview(null);
           setErrors({});
@@ -305,9 +289,8 @@ export default function BusinessForm() {
                 className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
                   errors.phoneNumber ? 'border-red-500 bg-red-50' : 'border-gray-300'
                 }`}
-                placeholder="+1 (555) 123-4567"
+                placeholder="+91 555-123-4567"
               />
-              {errors.phoneNumber && <p className="text-red-500 text-sm mt-1">{errors.phoneNumber}</p>}
             </div>
 
 
@@ -327,17 +310,16 @@ export default function BusinessForm() {
                 </label>
                 <input
                   type="url"
-                  name="social_email"
-                  value={formData.socialMedia.email}
+                  name="email"
+                  value={formData.email}
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                    errors.social_email ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                    errors.email? 'border-red-500 bg-red-50' : 'border-gray-300'
                   }`}
                  
                 />
               </div>
 
-              {/* Twitter */}
               <div>
                 <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
                 
@@ -345,18 +327,17 @@ export default function BusinessForm() {
                 </label>
                 <input
                   type="url"
-                  name="social_twitter"
-                  value={formData.socialMedia.twitter}
+                  name="link2"
+                  value={formData.link2}
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                    errors.social_twitter ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                    errors.link2 ? 'border-red-500 bg-red-50' : 'border-gray-300'
                   }`}
                   
                 />
                
               </div>
 
-              {/* Instagram */}
               <div>
                 <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
                   
@@ -364,11 +345,11 @@ export default function BusinessForm() {
                 </label>
                 <input
                   type="url"
-                  name="social_instagram"
-                  value={formData.socialMedia.instagram}
+                  name="link3"
+                  value={formData.link3}
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
-                    errors.social_instagram ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                    errors.link3 ? 'border-red-500 bg-red-50' : 'border-gray-300'
                   }`}
                   
                 />

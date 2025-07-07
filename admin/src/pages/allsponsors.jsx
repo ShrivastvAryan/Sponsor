@@ -275,7 +275,7 @@ const AllSponsors = () => {
                                         </div>
 
                                         <div className="space-y-2 mb-4">
-                                            {renderLink(sponsor.link1, 'Link1')}
+                                            {renderLink(sponsor.email, 'Link1')}
                                             {renderLink(sponsor.link2, 'Link2')}
                                             {renderLink(sponsor.link3, 'Link3')}
                                         </div>

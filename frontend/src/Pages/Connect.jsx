@@ -1,55 +1,14 @@
 import { useEffect, useState } from "react";
 import {
   Search,
-  Filter,
   Phone,
   Mail,
-  Building2,
   Calendar,
-  X,
   Copy,
   Check,
+  Link
 } from "lucide-react";
 
-// Mock data for demo - replace with your actual sponsors import
-const sponsors = [
-  {
-    id: 1,
-    name: "TechCorp Solutions",
-    eventType: "Hackathon",
-    sponsorshipType: "monetary",
-    email: "contact@techcorp.com",
-    phone: "+1-555-0123",
-    icon: "🏢",
-  },
-  {
-    id: 2,
-    name: "InnovateLab",
-    eventType: "Conference",
-    sponsorshipType: "in-kind",
-    email: "hello@innovatelab.com",
-    phone: "+1-555-0456",
-    icon: "🚀",
-  },
-  {
-    id: 3,
-    name: "DevSponsor Inc",
-    eventType: "Workshop",
-    sponsorshipType: "monetary",
-    email: "sponsors@devsponsor.com",
-    phone: "+1-555-0789",
-    icon: "💻",
-  },
-  {
-    id: 4,
-    name: "StartupHub",
-    eventType: "Student Fest",
-    sponsorshipType: "in-kind",
-    email: "events@startuphub.com",
-    phone: "+1-555-0321",
-    icon: "🎯",
-  },
-];
 
 export const Connect = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -61,12 +20,11 @@ export const Connect = () => {
 
   console.log(isCompanies);
 
-  // API fetching from backend
   useEffect(() => {
     const fetchSponsors = async () => {
       try {
         const response = await fetch(
-          "https://sponsor-rgac.onrender.com/allsponsor"
+          "http://localhost:4000/allsponsor"
         );
         const data = await response.json();
         setIsCompanies(data);
@@ -81,21 +39,33 @@ export const Connect = () => {
   }, []);
 
   const eventTypes = [
-    "all",
-    "Hackathon",
-    "Student Fest",
-    "Conference",
-    "Workshop",
+    'All',
+    'Food and Beverage',
+    'Technology',
+    'Healthcare',
+    'Ed-Tech',
+    'Education',
+    'Retail',
+    'Finance',
+    'Real Estate',
+    'Entertainment',
+    'Sports',
+    'Travel',
+    'Fashion',
+    'Automotive',
+    'Legal',
+    'Marketing',
+    'Other'
   ];
 
-  const filteredSponsors = sponsors.filter((sponsor) => {
+  const filteredSponsors = isCompanies.filter((sponsor) => {
     const matchesSearch =
-      sponsor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      sponsor.eventType.toLowerCase().includes(searchTerm.toLowerCase());
+      sponsor.company_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      sponsor.category.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesFilter =
-      selectedFilter === "all" ||
-      sponsor.eventType === selectedFilter ||
-      sponsor.sponsorshipType === selectedFilter;
+      selectedFilter === "All" ||
+      sponsor.category.toLowerCase() === selectedFilter.toLowerCase() ||
+      sponsor.category === selectedFilter
     return matchesSearch && matchesFilter;
   });
 
@@ -118,7 +88,7 @@ export const Connect = () => {
   const getSelectedSponsorEmails = () => {
     return selectedSponsors
       .map((sponsorId) => {
-        const sponsor = sponsors.find((s) => s.id === sponsorId);
+        const sponsor = isCompanies.find((s) => s.id === sponsorId);
         return sponsor ? sponsor.email : null;
       })
       .filter((email) => email !== null);
@@ -148,8 +118,8 @@ export const Connect = () => {
     const emails = getSelectedSponsorEmails();
     const sponsorNames = selectedSponsors
       .map((sponsorId) => {
-        const sponsor = sponsors.find((s) => s.id === sponsorId);
-        return sponsor ? sponsor.name : null;
+        const sponsor = isCompanies.find((s) => s.id === sponsorId);
+        return sponsor ? sponsor.company_name : null;
       })
       .filter((name) => name !== null);
 
@@ -315,14 +285,14 @@ Best regards,
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-2">
                     {selectedSponsors.slice(0, 3).map((sponsorId, index) => {
-                      const sponsor = sponsors.find((s) => s.id === sponsorId);
+                      const sponsor = isCompanies.find((s) => s.id === sponsorId);
                       return (
                         <div
                           key={sponsorId}
-                          className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-pink-400 flex items-center justify-center text-sm border-2 border-white shadow-lg"
+                          className="w-10 h-10 rounded-full bg-white object-contain flex items-center justify-center text-sm border-2 border-white shadow-lg"
                           style={{ zIndex: 10 - index }}
                         >
-                          {sponsor?.icon}
+                          <img src={sponsor.logo_url} className="rounded-full"/>
                         </div>
                       );
                     })}
@@ -435,13 +405,13 @@ Best regards,
               {/* Sponsor Icon */}
               <div className="flex justify-center mb-4">
                 <div
-                  className={`w-20 h-20 bg-gradient-to-br from-orange-400 to-pink-400 rounded-xl flex items-center justify-center text-2xl shadow-lg transition-all duration-300 ${
+                  className={`w-20 h-20 object-contain bg-gradient-to-br bg-white rounded-xl flex items-center justify-center text-2xl shadow-lg transition-all duration-300 ${
                     selectedSponsors.includes(sponsor.id)
                       ? "rotate-12 scale-110 shadow-orange-400/50"
                       : "group-hover:rotate-12 group-hover:scale-110"
                   }`}
                 >
-                  {sponsor.icon}
+                  <img src={sponsor.logo_url}/>
                 </div>
               </div>
 
@@ -453,14 +423,14 @@ Best regards,
                     : "text-white group-hover:text-orange-300"
                 }`}
               >
-                {sponsor.name}
+                {sponsor.company_name}
               </h3>
 
               {/* Event Type Badge */}
               <div className="flex items-center justify-center gap-2 mb-4">
                 <Calendar size={16} className="text-orange-400" />
                 <span className="text-gray-300 text-sm font-medium">
-                  {sponsor.eventType}
+                  {sponsor.category}
                 </span>
                 <span
                   className={`px-2 py-1 rounded-full text-xs font-medium ${
@@ -469,7 +439,7 @@ Best regards,
                       : "bg-blue-400/20 text-blue-300 border border-blue-400/30"
                   }`}
                 >
-                  {sponsor.sponsorshipType}
+                  {sponsor.category}
                 </span>
               </div>
 
@@ -479,20 +449,47 @@ Best regards,
                   <Mail size={14} className="text-orange-400 flex-shrink-0" />
                   <a
                     href={`mailto:${sponsor.email}`}
+                    target="_blank"
                     className="text-gray-300 hover:text-orange-300 transition-colors duration-300 text-sm truncate"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    {sponsor.email}
+                    {sponsor.email || "No Email Provided"}
                   </a>
                 </div>
+
+                <div className="flex items-center gap-2">
+                  <Link size={14} className="text-orange-400 flex-shrink-0" />
+                  <a
+                    href={sponsor.link2}
+                    target="_blank"
+                    className="text-gray-300 hover:text-orange-300 transition-colors duration-300 text-sm truncate"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {sponsor.link2|| "No Link Provided"}
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Link size={14} className="text-orange-400 flex-shrink-0" />
+                  <a
+                    href={sponsor.link2}
+                    target="_blank"
+                    className="text-gray-300 hover:text-orange-300 transition-colors duration-300 text-sm truncate"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {sponsor.link3|| "No Link Provided"}
+                  </a>
+                </div>
+
                 <div className="flex items-center gap-2">
                   <Phone size={14} className="text-orange-400 flex-shrink-0" />
                   <a
-                    href={`tel:${sponsor.phone}`}
+                    href={`tel:${sponsor.phoneNumber}`}
+                    target="_blank"
                     className="text-gray-300 hover:text-orange-300 transition-colors duration-300 text-sm"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    {sponsor.phone}
+                    {sponsor.phoneNumber||"No Phone Number Provided"}
                   </a>
                 </div>
               </div>

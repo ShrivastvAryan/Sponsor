@@ -41,12 +41,11 @@ const Sponsor = mongoose.model("Sponsor", {
   },
   phoneNumber: {  // Added phone number field
     type: String,
-    required: true
   },
   logo_url: {  // Added logo URL field
     type: String,
   },
-  link1: {
+  email: {
     type: String,
   },
   link2: {
@@ -104,9 +103,9 @@ app.post('/addsponsor', upload.single('logo'), async (req, res) => {
       category: req.body.category1, 
       phoneNumber: req.body.phoneNumber,
       logo_url: logo_url,
-      link1: req.body.facebook,
-      link2: req.body.twitter,
-      link3: req.body.instagram,
+      email: req.body.email,
+      link2: req.body.link2,
+      link3: req.body.link3,
     });
 
     console.log('Sponsor to save:', sponsor);
@@ -167,19 +166,6 @@ app.post('/removesponsor',async(req,res)=>{
         company_name:req.body.name
     })
 })
-
-//API for getting top products
-
-app.get('/topsponsor', async (req, res) => {
-    try {
-        const sponsors = await Sponsor.find({});
-        console.log("Top sponsor fetched");
-        res.send(sponsors);
-    } catch (error) {
-        console.error("Error fetching top sponsor:", error);
-        res.status(500).send({ error: "An error occurred while fetching top sponsors" });
-    }
-});
 
 
 app.get('/allsponsor',async(req,res)=>{
