@@ -14,7 +14,7 @@ export const Connect = () => {
   useEffect(() => {
     const fetchSponsors = async () => {
       try {
-        const response = await fetch("http://localhost:4000/allsponsor");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/allsponsor`);
         const data = await response.json();
         setIsCompanies(data);
       } catch (error) {
