@@ -1,14 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Search,
-  Phone,
-  Mail,
-  Calendar,
-  Copy,
-  Check,
-  Link
-} from "lucide-react";
-
+import { Search, Phone, Mail, Calendar, Copy, Check, Link } from "lucide-react";
 
 export const Connect = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -23,9 +14,7 @@ export const Connect = () => {
   useEffect(() => {
     const fetchSponsors = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:4000/allsponsor"
-        );
+        const response = await fetch("http://localhost:4000/allsponsor");
         const data = await response.json();
         setIsCompanies(data);
       } catch (error) {
@@ -39,23 +28,23 @@ export const Connect = () => {
   }, []);
 
   const eventTypes = [
-    'All',
-    'Food and Beverage',
-    'Technology',
-    'Healthcare',
-    'Ed-Tech',
-    'Education',
-    'Retail',
-    'Finance',
-    'Real Estate',
-    'Entertainment',
-    'Sports',
-    'Travel',
-    'Fashion',
-    'Automotive',
-    'Legal',
-    'Marketing',
-    'Other'
+    "All",
+    "Food and Beverage",
+    "Technology",
+    "Healthcare",
+    "Ed-Tech",
+    "Education",
+    "Retail",
+    "Finance",
+    "Real Estate",
+    "Entertainment",
+    "Sports",
+    "Travel",
+    "Fashion",
+    "Automotive",
+    "Legal",
+    "Marketing",
+    "Other",
   ];
 
   const filteredSponsors = isCompanies.filter((sponsor) => {
@@ -65,7 +54,7 @@ export const Connect = () => {
     const matchesFilter =
       selectedFilter === "All" ||
       sponsor.category.toLowerCase() === selectedFilter.toLowerCase() ||
-      sponsor.category === selectedFilter
+      sponsor.category === selectedFilter;
     return matchesSearch && matchesFilter;
   });
 
@@ -167,7 +156,7 @@ Best regards,
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden pt-30 pb-10">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden pt-15 pb-10">
       {/* Animated background particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
@@ -278,21 +267,26 @@ Best regards,
 
         {/* Connection Action Bar */}
         {selectedSponsors.length > 0 && (
-          <div className="mb-8 animate-slideDown">
+          <div className="mb-8 ">
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 backdrop-blur-lg rounded-full px-6 py-4 shadow-2xl border border-white/20 max-w-4xl mx-auto">
               <div className="flex items-center gap-4">
                 {/* Selected sponsors avatars */}
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-2">
                     {selectedSponsors.slice(0, 3).map((sponsorId, index) => {
-                      const sponsor = isCompanies.find((s) => s.id === sponsorId);
+                      const sponsor = isCompanies.find(
+                        (s) => s.id === sponsorId
+                      );
                       return (
                         <div
                           key={sponsorId}
                           className="w-10 h-10 rounded-full bg-white object-contain flex items-center justify-center text-sm border-2 border-white shadow-lg"
                           style={{ zIndex: 10 - index }}
                         >
-                          <img src={sponsor.logo_url} className="rounded-full"/>
+                          <img
+                            src={sponsor.logo_url}
+                            className="rounded-full"
+                          />
                         </div>
                       );
                     })}
@@ -411,7 +405,7 @@ Best regards,
                       : "group-hover:rotate-12 group-hover:scale-110"
                   }`}
                 >
-                  <img src={sponsor.logo_url}/>
+                  <img src={sponsor.logo_url} />
                 </div>
               </div>
 
@@ -465,7 +459,7 @@ Best regards,
                     className="text-gray-300 hover:text-orange-300 transition-colors duration-300 text-sm truncate"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    {sponsor.link2|| "No Link Provided"}
+                    {sponsor.link2 || "No Link Provided"}
                   </a>
                 </div>
 
@@ -477,7 +471,7 @@ Best regards,
                     className="text-gray-300 hover:text-orange-300 transition-colors duration-300 text-sm truncate"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    {sponsor.link3|| "No Link Provided"}
+                    {sponsor.link3 || "No Link Provided"}
                   </a>
                 </div>
 
@@ -489,7 +483,7 @@ Best regards,
                     className="text-gray-300 hover:text-orange-300 transition-colors duration-300 text-sm"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    {sponsor.phoneNumber||"No Phone Number Provided"}
+                    {sponsor.phoneNumber || "No Phone Number Provided"}
                   </a>
                 </div>
               </div>
