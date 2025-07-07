@@ -1,5 +1,15 @@
 import { useEffect, useState } from "react";
-import { Search, Filter, Phone, Mail, Building2, Calendar } from "lucide-react";
+import {
+  Search,
+  Filter,
+  Phone,
+  Mail,
+  Building2,
+  Calendar,
+  X,
+  Copy,
+  Check,
+} from "lucide-react";
 
 // Mock data for demo - replace with your actual sponsors import
 const sponsors = [
@@ -47,6 +57,7 @@ export const Connect = () => {
   const [selectedSponsors, setSelectedSponsors] = useState([]);
   const [isCompanies, setIsCompanies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [emailsCopied, setEmailsCopied] = useState(false);
 
   console.log(isCompanies);
 
@@ -102,6 +113,87 @@ export const Connect = () => {
     } else {
       setSelectedSponsors(filteredSponsors.map((sponsor) => sponsor.id));
     }
+  };
+
+  const getSelectedSponsorEmails = () => {
+    return selectedSponsors
+      .map((sponsorId) => {
+        const sponsor = sponsors.find((s) => s.id === sponsorId);
+        return sponsor ? sponsor.email : null;
+      })
+      .filter((email) => email !== null);
+  };
+
+  const copyEmailsToClipboard = async () => {
+    const emails = getSelectedSponsorEmails();
+    const emailString = emails.join("; ");
+
+    try {
+      await navigator.clipboard.writeText(emailString);
+      setEmailsCopied(true);
+      setTimeout(() => setEmailsCopied(false), 2000);
+      return true;
+    } catch (err) {
+      console.error("Failed to copy emails:", err);
+      return false;
+    }
+  };
+
+  const handleConnectAll = async () => {
+    if (selectedSponsors.length === 0) {
+      alert("Please select at least one sponsor to connect.");
+      return;
+    }
+
+    const emails = getSelectedSponsorEmails();
+    const sponsorNames = selectedSponsors
+      .map((sponsorId) => {
+        const sponsor = sponsors.find((s) => s.id === sponsorId);
+        return sponsor ? sponsor.name : null;
+      })
+      .filter((name) => name !== null);
+
+    // Copy emails to clipboard first
+    await copyEmailsToClipboard();
+
+    // Create mailto URL with BCC
+    const bccEmails = emails.join(",");
+    const subject = encodeURIComponent(
+      "Sponsorship Opportunity - Partnership Proposal"
+    );
+    const body = encodeURIComponent(`Dear Sponsors,
+
+I hope this message finds you well. I am reaching out to discuss potential sponsorship opportunities for our upcoming event.
+
+We believe that a partnership with your organization would be mutually beneficial and align with your company's values and objectives.
+
+Selected Companies:
+${sponsorNames.map((name) => `• ${name}`).join("\n")}
+
+I would love to schedule a brief call to discuss how we can collaborate and create value for both parties.
+
+Thank you for considering this opportunity. I look forward to hearing from you.
+
+Best regards,
+[Your Name]
+[Your Title]
+[Your Organization]
+[Your Contact Information]`);
+
+    // Create the mailto URL
+    const mailtoUrl = `mailto:?bcc=${bccEmails}&subject=${subject}&body=${body}`;
+
+    // Open the mail client
+    window.location.href = mailtoUrl;
+
+    // Show success message
+    alert(
+      `Emails copied to clipboard! Opening mail client with ${selectedSponsors.length} sponsors in BCC.`
+    );
+  };
+
+  const handleClearAll = () => {
+    setSelectedSponsors([]);
   };
 
   return (
@@ -187,14 +279,115 @@ export const Connect = () => {
                 </button>
 
                 {selectedSponsors.length > 0 && (
-                  <span className="px-3 py-1 bg-orange-400/20 text-orange-300 rounded-full text-sm font-medium border border-orange-400/30 animate-pulse">
-                    {selectedSponsors.length} selected
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 bg-orange-400/20 text-orange-300 rounded-full text-sm font-medium border border-orange-400/30 animate-pulse">
+                      {selectedSponsors.length} selected
+                    </span>
+                    <button
+                      onClick={copyEmailsToClipboard}
+                      className="px-3 py-1 bg-blue-400/20 text-blue-300 rounded-full text-sm font-medium border border-blue-400/30 hover:bg-blue-400/30 transition-colors duration-200 flex items-center gap-1"
+                    >
+                      {emailsCopied ? (
+                        <>
+                          <Check size={14} />
+                          Copied!
+                        </>
+                      ) : (
+                        <>
+                          <Copy size={14} />
+                          Copy Emails
+                        </>
+                      )}
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
           </div>
         </div>
+
+        {/* Connection Action Bar */}
+        {selectedSponsors.length > 0 && (
+          <div className="mb-8 animate-slideDown">
+            <div className="bg-gradient-to-r from-blue-500 to-purple-600 backdrop-blur-lg rounded-full px-6 py-4 shadow-2xl border border-white/20 max-w-4xl mx-auto">
+              <div className="flex items-center gap-4">
+                {/* Selected sponsors avatars */}
+                <div className="flex items-center gap-2">
+                  <div className="flex -space-x-2">
+                    {selectedSponsors.slice(0, 3).map((sponsorId, index) => {
+                      const sponsor = sponsors.find((s) => s.id === sponsorId);
+                      return (
+                        <div
+                          key={sponsorId}
+                          className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-pink-400 flex items-center justify-center text-sm border-2 border-white shadow-lg"
+                          style={{ zIndex: 10 - index }}
+                        >
+                          {sponsor?.icon}
+                        </div>
+                      );
+                    })}
+                    {selectedSponsors.length > 3 && (
+                      <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-xs text-white border-2 border-white shadow-lg">
+                        +{selectedSponsors.length - 3}
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-white ml-2">
+                    <div className="font-bold text-sm">
+                      {selectedSponsors.length} sponsor
+                      {selectedSponsors.length > 1 ? "s" : ""} selected
+                    </div>
+                    <div className="text-xs text-white/80">
+                      Ready to connect via email (BCC)
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action buttons */}
+                <div className="flex items-center gap-2 ml-auto">
+                  <button
+                    onClick={handleClearAll}
+                    className="px-4 py-2 text-white/80 hover:text-white text-sm font-medium transition-colors duration-200"
+                  >
+                    Clear All
+                  </button>
+                  <button
+                    onClick={handleConnectAll}
+                    className="px-6 py-2 bg-white text-blue-600 rounded-full font-semibold text-sm hover:bg-white/90 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center gap-2"
+                  >
+                    <Mail size={16} />
+                    Connect All
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Email Preview */}
+        {selectedSponsors.length > 0 && (
+          <div className="mb-8">
+            <div className="bg-white/5 backdrop-blur-lg rounded-xl p-4 border border-white/10 max-w-4xl mx-auto">
+              <div className="flex items-center gap-2 mb-3">
+                <Mail size={18} className="text-orange-400" />
+                <h3 className="text-white font-semibold">Email Preview</h3>
+              </div>
+              <div className="text-sm text-gray-300 space-y-1">
+                <div>
+                  <strong>BCC:</strong> {getSelectedSponsorEmails().join("; ")}
+                </div>
+                <div>
+                  <strong>Subject:</strong> Sponsorship Opportunity -
+                  Partnership Proposal
+                </div>
+                <div className="text-xs text-gray-400 mt-2">
+                  Click "Connect All" to open your email client with all
+                  selected sponsors in BCC
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Loading State */}
         {isLoading && (
@@ -222,10 +415,22 @@ export const Connect = () => {
                 animation: "fadeInUp 0.8s ease-out both",
               }}
             >
-              {/* Selection Indicator - Hidden */}
-              <div className="absolute top-4 right-4 opacity-0 pointer-events-none">
-                <div className="w-6 h-6 rounded-full border-2 border-white/40"></div>
-              </div>
+              {/* Selection Indicator */}
+              {selectedSponsors.includes(sponsor.id) && (
+                <div className="absolute top-4 right-4 w-6 h-6 bg-orange-400 rounded-full flex items-center justify-center animate-scaleIn">
+                  <svg
+                    className="w-4 h-4 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+              )}
 
               {/* Sponsor Icon */}
               <div className="flex justify-center mb-4">
@@ -275,6 +480,7 @@ export const Connect = () => {
                   <a
                     href={`mailto:${sponsor.email}`}
                     className="text-gray-300 hover:text-orange-300 transition-colors duration-300 text-sm truncate"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     {sponsor.email}
                   </a>
@@ -284,6 +490,7 @@ export const Connect = () => {
                   <a
                     href={`tel:${sponsor.phone}`}
                     className="text-gray-300 hover:text-orange-300 transition-colors duration-300 text-sm"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     {sponsor.phone}
                   </a>
@@ -321,6 +528,36 @@ export const Connect = () => {
             transform: translateY(0);
             opacity: 1;
           }
+        }
+
+        @keyframes slideDown {
+          from {
+            transform: translateX(-50%) translateY(-100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            transform: scale(0);
+            opacity: 0;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+
+        .animate-slideDown {
+          animation: slideDown 0.5s ease-out;
+        }
+
+        .animate-scaleIn {
+          animation: scaleIn 0.3s ease-out;
         }
       `}</style>
     </div>
