@@ -3,7 +3,7 @@ import { Search, Phone, Mail, Calendar, Copy, Check, Link } from "lucide-react";
 
 export const Connect = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [selectedFilter, setSelectedFilter] = useState("All");
   const [selectedSponsors, setSelectedSponsors] = useState([]);
   const [isCompanies, setIsCompanies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -265,7 +265,7 @@ Best regards,
         {selectedSponsors.length > 0 && (
           <div className="mb-8 ">
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 backdrop-blur-lg rounded-full px-6 py-4 shadow-2xl border border-white/20 max-w-4xl mx-auto">
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-center gap-4 p-2">
                 {/* Selected sponsors avatars */}
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-2">
@@ -423,7 +423,7 @@ Best regards,
                   {sponsor.category}
                 </span>
                 <span
-                  className={`px-2 py-1 rounded-full text-xs font-medium ${
+                  className={`px-2 py-1 rounded-full text-xs font-medium text-center ${
                     sponsor.sponsorshipType === "monetary"
                       ? "bg-yellow-400/20 text-yellow-300 border border-yellow-400/30"
                       : "bg-blue-400/20 text-blue-300 border border-blue-400/30"
