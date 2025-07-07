@@ -28,23 +28,19 @@ export const Connect = () => {
   }, []);
 
   const eventTypes = [
-    "All",
-    "Food and Beverage",
-    "Technology",
-    "Healthcare",
-    "Ed-Tech",
-    "Education",
-    "Retail",
-    "Finance",
-    "Real Estate",
-    "Entertainment",
-    "Sports",
-    "Travel",
-    "Fashion",
-    "Automotive",
-    "Legal",
-    "Marketing",
-    "Other",
+    'All',
+    'Food and Beverage',
+    'Technology',
+    'Healthcare',
+    'Ed-Tech',
+    'Education',
+    'Retail',
+    'Finance',
+    'Entertainment',
+    'Sports',
+    'Travel',
+    'Fashion',
+    'Other'
   ];
 
   const filteredSponsors = isCompanies.filter((sponsor) => {

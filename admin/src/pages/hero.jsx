@@ -34,14 +34,10 @@ export default function BusinessForm() {
     'Education',
     'Retail',
     'Finance',
-    'Real Estate',
     'Entertainment',
     'Sports',
     'Travel',
     'Fashion',
-    'Automotive',
-    'Legal',
-    'Marketing',
     'Other'
   ];
 
