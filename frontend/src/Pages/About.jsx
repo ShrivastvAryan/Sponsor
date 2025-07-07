@@ -129,14 +129,14 @@ export const About = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16">
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-black text-yellow-400 mb-1">
-                2000+
+               100+
               </div>
               <div className="text-white/80 text-sm">Companies Listed</div>
             </div>
             <div className="hidden sm:block w-px h-10 bg-white/20"></div>
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-black text-yellow-400 mb-1">
-                50+
+                10+
               </div>
               <div className="text-white/80 text-sm">Industries Covered</div>
             </div>
