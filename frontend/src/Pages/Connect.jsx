@@ -27,6 +27,80 @@ export const Connect = () => {
     fetchSponsors();
   }, []);
 
+  const categoryColors = {
+  "Food and Beverage": {
+    bg: "bg-amber-400/20",
+    text: "text-amber-300",
+    border: "border-amber-400/50",
+  },
+  "Technology": {
+    bg: "bg-cyan-400/20",
+    text: "text-cyan-300",
+    border: "border-cyan-400/50",
+  },
+  "Healthcare": {
+    bg: "bg-emerald-400/20",
+    text: "text-emerald-300",
+    border: "border-emerald-400/50",
+  },
+  "Ed-Tech": {
+    bg: "bg-sky-400/20",
+    text: "text-sky-300",
+    border: "border-sky-400/50",
+  },
+  "Education": {
+    bg: "bg-lime-400/20",
+    text: "text-lime-300",
+    border: "border-lime-400/50",
+  },
+  "Retail": {
+    bg: "bg-rose-400/20",
+    text: "text-rose-300",
+    border: "border-rose-400/50",
+  },
+  "Finance": {
+    bg: "bg-yellow-400/20",
+    text: "text-yellow-300",
+    border: "border-yellow-400/50",
+  },
+  "Entertainment": {
+    bg: "bg-purple-400/20",
+    text: "text-purple-300",
+    border: "border-purple-400/50",
+  },
+  "Sports": {
+    bg: "bg-orange-400/20",
+    text: "text-orange-300",
+    border: "border-orange-400/50",
+  },
+  "Travel": {
+    bg: "bg-teal-400/20",
+    text: "text-teal-300",
+    border: "border-teal-400/50",
+  },
+  "Fashion": {
+    bg: "bg-pink-400/20",
+    text: "text-pink-300",
+    border: "border-pink-400/50",
+  },
+  "Other": {
+    bg: "bg-fuchsia-500/25",
+    text: "text-fuchsia-300",
+    border: "border-fuchsia-400/50",
+  },
+  "All": {
+    bg: "bg-white/10",
+    text: "text-white/90",
+    border: "border-white/30",
+  },
+  default: {
+    bg: "bg-gray-400/20",
+    text: "text-gray-300",
+    border: "border-gray-400/50",
+  },
+}
+
+
   const eventTypes = [
     'All',
     'Food and Beverage',
@@ -42,6 +116,7 @@ export const Connect = () => {
     'Fashion',
     'Other'
   ];
+
 
   const filteredSponsors = isCompanies.filter((sponsor) => {
     const matchesSearch =
@@ -358,7 +433,12 @@ Best regards,
 
         {/* Sponsors Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredSponsors.map((sponsor, index) => (
+          
+          {filteredSponsors.map((sponsor, index) => {
+
+            const colors = categoryColors[sponsor.category] || categoryColors.default;
+
+            return(
             <div
               key={sponsor.id}
               onClick={() => handleCardClick(sponsor.id)}
@@ -416,18 +496,13 @@ Best regards,
                 {sponsor.company_name}
               </h3>
 
+
               {/* Event Type Badge */}
               <div className="flex items-center justify-center gap-2 mb-4">
-                <Calendar size={16} className="text-orange-400" />
-                <span className="text-gray-300 text-sm font-medium">
-                  {sponsor.category}
-                </span>
+
                 <span
-                  className={`px-2 py-1 rounded-full text-xs font-medium text-center ${
-                    sponsor.sponsorshipType === "monetary"
-                      ? "bg-yellow-400/20 text-yellow-300 border border-yellow-400/30"
-                      : "bg-blue-400/20 text-blue-300 border border-blue-400/30"
-                  }`}
+                  className={`px-2 py-1 rounded-full text-xs font-medium text-center 
+                  ${colors.bg} ${colors.text} ${colors.border}`}
                 >
                   {sponsor.category}
                 </span>
@@ -484,7 +559,7 @@ Best regards,
                 </div>
               </div>
             </div>
-          ))}
+          )})}
         </div>
 
         {/* No Results */}
