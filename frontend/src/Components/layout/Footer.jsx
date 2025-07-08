@@ -229,9 +229,9 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="py-6 border-t text-center border-purple-700/30 ">
-          <p className="text-gray-400 text-sm">Developed by team Data Smiths</p>
+          <p className="text-gray-400 text-sm">Developed with ❤️ </p>
           <p className="text-gray-400 text-sm mt-2">
-            © 2024 Sponsors. All rights reserved.
+            © 2025 click2sponsor. All rights reserved.
           </p>
         </div>
       </div>

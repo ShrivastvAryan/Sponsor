@@ -85,7 +85,7 @@ export const About = () => {
         <div className="relative z-10 max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full text-white text-sm font-medium mb-6">
             <span className="text-base">🏢</span>
-            <span>Direct Access to Sponsors</span>
+            <span>Email them with one click</span>
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 text-white leading-tight">
@@ -95,7 +95,7 @@ export const About = () => {
             <br />
             <span className="relative">
               Sponsorship Partners
-              <span className="absolute -right-2 top-0 bottom-0 w-0.5 bg-yellow-400 animate-pulse"></span>
+             {/* <span className="absolute -right-2 top-0 bottom-0 w-0.5 bg-yellow-400 animate-pulse"></span>*/} 
             </span>
           </h1>
 

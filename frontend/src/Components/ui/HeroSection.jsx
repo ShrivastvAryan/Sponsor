@@ -75,14 +75,7 @@ export const HeroSection = () => {
 
           {/* Features List */}
           <div className="flex flex-wrap justify-center gap-6 mb-12 text-white/80">
-            <div className="flex items-center space-x-2">
-              <Zap className="w-5 h-5 text-yellow-400" />
-              <span>Instant Matching</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Shield className="w-5 h-5 text-green-400" />
-              <span>Verified Sponsors</span>
-            </div>
+            
             <div className="flex items-center space-x-2">
               <Gift className="w-5 h-5 text-purple-400" />
               <span>Multiple Funding Types</span>
