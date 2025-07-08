@@ -222,7 +222,7 @@ Best regards,
               <div className="flex items-center gap-3">
                 <button
                   onClick={handleSelectAll}
-                  className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
+                  className={`px-6 py-1 md:py-3 md:text-md rounded-full font-semibold text-sm transition-all duration-300 hover:scale-105 ${
                     selectedSponsors.length > 0
                       ? "bg-gradient-to-r from-orange-400 to-pink-400 text-white shadow-lg"
                       : "bg-white/10 text-gray-300 border border-white/20 hover:bg-white/15"
