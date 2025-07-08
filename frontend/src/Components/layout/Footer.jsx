@@ -208,7 +208,7 @@ export const Footer = () => {
           <div className="md:col-span-1">
             <h3 className="text-white font-semibold mb-4">Disclaimer</h3>
             <div className="flex h-auto w-90vw lg:w-[30rem]  p-1 text-sm text-justify text-gray-400">
-            This website helps users discover potential sponsors. While we aim for accurate and reliable content, we do not guarantee the legitimacy, availability, or success of any sponsorship opportunity.
+            This website helps users discover potential sponsors. While we aim for accurate and reliable content, we do not guarantee the legitimacy, accurate information, availability, or success of any sponsorship opportunity.
 
             We do not endorse or take responsibility for any actions, agreements, or transactions between users and sponsors. All decisions are made solely at the users' own risk.
 
