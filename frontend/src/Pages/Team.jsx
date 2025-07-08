@@ -8,7 +8,7 @@ export const Team = () => {
       role: "Frontend Developer",
       image: "https://avatars.githubusercontent.com/u/166201809?s=400&v=4",
       bio: "UI/UX enthusiast with expertise in modern frontend technologies and design systems.",
-      email: "yadavDharmesh2306@gmail.com",
+      email: "yadavdharmesh2306@gmail.com",
 
       github: "https://github.com/Dharmesh-yadavo?",
       linkedin: "https://www.linkedin.com/in/dharmesh-yadavoprofile/",
