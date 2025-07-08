@@ -6,7 +6,7 @@ import ScrollToTop from "../../ScrollToTop";
 export const AppLayout = () => {
   return (
     <>
-      <ScrollToTop />
+    <ScrollToTop />
       <Header />
       <Outlet />
       <Footer />

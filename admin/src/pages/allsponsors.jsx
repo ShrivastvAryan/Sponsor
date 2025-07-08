@@ -127,7 +127,7 @@ const AllSponsors = () => {
 
     if (error) {
         return (
-            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
                 <div className="text-center bg-white p-8 rounded-lg shadow-md max-w-md">
                     <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
                     <h2 className="text-xl font-semibold text-gray-800 mb-2">Something went wrong</h2>
